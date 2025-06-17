@@ -1,46 +1,160 @@
-# Getting Started with Create React App
+# 🚀 Portofolio Muhammad Mallls
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Portofolio pribadi yang modern dan responsif untuk menampilkan keahlian, proyek, dan pengalaman sebagai Full Stack Developer.
 
-## Available Scripts
+## ✨ Fitur Utama
 
-In the project directory, you can run:
+### 🎨 **Design & UI/UX**
 
-### `npm start`
+- **Responsive Design** - Optimal di semua perangkat (desktop, tablet, mobile)
+- **Dark Mode** - Toggle antara mode terang dan gelap dengan preferensi yang tersimpan
+- **Modern Animations** - Animasi smooth menggunakan Framer Motion
+- **Glass Morphism** - Efek visual modern dengan backdrop blur
+- **Gradient Design** - Warna-warna gradient yang menarik
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🛠️ **Teknologi & Fitur**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **React 19** - Framework JavaScript modern
+- **TypeScript** - Type safety dan developer experience yang lebih baik
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Library animasi yang powerful
+- **Lucide React** - Icon library yang modern
+- **Smooth Scrolling** - Navigasi yang halus antar section
 
-### `npm test`
+### 📱 **Komponen Utama**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Header** - Navigasi responsif dengan dark mode toggle
+2. **Hero Section** - Landing page yang menarik dengan CTA buttons
+3. **About Section** - Informasi pribadi dan keahlian
+4. **Projects Section** - Showcase proyek dengan filter kategori
+5. **Contact Section** - Form kontak dan informasi kontak
+6. **Footer** - Informasi tambahan dan social links
 
-### `npm run build`
+### 🎯 **Fitur Interaktif**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Project Filtering** - Filter proyek berdasarkan kategori
+- **Contact Form** - Form kontak dengan validasi dan feedback
+- **Social Links** - Link ke platform sosial media
+- **Smooth Navigation** - Scroll smooth ke section yang dituju
+- **Loading States** - Indikator loading untuk form submission
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Cara Menjalankan
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js (versi 16 atau lebih baru)
+- npm atau yarn
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Clone repository
+git clone <repository-url>
+cd portofolio-mallls
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Install dependencies
+npm install
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Jalankan development server
+npm start
+```
 
-## Learn More
+### Build untuk Production
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📁 Struktur Proyek
+
+```
+src/
+├── components/
+│   ├── Header.tsx          # Navigasi dan dark mode toggle
+│   ├── Hero.tsx           # Landing section
+│   ├── About.tsx          # Informasi pribadi dan skills
+│   ├── Projects.tsx       # Showcase proyek
+│   ├── Contact.tsx        # Form kontak
+│   └── Footer.tsx         # Footer dengan social links
+├── App.tsx                # Main component
+├── index.tsx              # Entry point
+└── index.css              # Global styles
+```
+
+## 🎨 Customization
+
+### Mengubah Informasi Pribadi
+
+1. Edit file `Hero.tsx` untuk mengubah nama dan deskripsi
+2. Update `About.tsx` untuk mengubah skills dan pengalaman
+3. Modifikasi `Projects.tsx` untuk menambah/mengubah proyek
+4. Update `Contact.tsx` untuk mengubah informasi kontak
+
+### Mengubah Warna
+
+1. Edit `tailwind.config.js` untuk mengubah color palette
+2. Update gradient colors di komponen yang relevan
+
+### Menambah Section Baru
+
+1. Buat komponen baru di folder `components/`
+2. Import dan tambahkan ke `App.tsx`
+3. Update navigasi di `Header.tsx`
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+
+## 🌟 Fitur Advanced
+
+### Dark Mode
+
+- Otomatis mendeteksi preferensi sistem
+- Tersimpan di localStorage
+- Smooth transition antar mode
+
+### Animations
+
+- Scroll-triggered animations
+- Hover effects
+- Loading animations
+- Page transitions
+
+### Performance
+
+- Lazy loading untuk images
+- Optimized animations
+- Efficient re-renders
+
+## 🔧 Dependencies
+
+```json
+{
+  "react": "^19.1.0",
+  "react-dom": "^19.1.0",
+  "typescript": "^4.9.5",
+  "framer-motion": "^11.0.0",
+  "lucide-react": "^0.400.0",
+  "tailwindcss": "^3.4.0"
+}
+```
+
+## 📄 License
+
+MIT License - bebas untuk digunakan dan dimodifikasi.
+
+## 🤝 Kontribusi
+
+Kontribusi selalu diterima! Silakan buat pull request atau buka issue untuk saran dan perbaikan.
+
+## 📞 Kontak
+
+- **Email**: muhammad.mallls@example.com
+- **LinkedIn**: [LinkedIn Profile]
+- **GitHub**: [GitHub Profile]
+
+---
+
+⭐ **Star repository ini jika Anda menyukainya!**
