@@ -1,4 +1,4 @@
-# 🚀 Portofolio Muhammad Mallls
+# 🚀 Portofolio Mochammad Akmal Humami
 
 Portofolio pribadi yang modern dan responsif untuk menampilkan keahlian, proyek, dan pengalaman sebagai Full Stack Developer.
 
