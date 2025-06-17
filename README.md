@@ -151,9 +151,9 @@ Kontribusi selalu diterima! Silakan buat pull request atau buka issue untuk sara
 
 ## 📞 Kontak
 
-- **Email**: muhammad.mallls@example.com
-- **LinkedIn**: [LinkedIn Profile]
-- **GitHub**: [GitHub Profile]
+- **Email**: ahumami22@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/mochakmalhumami/
+- **GitHub**: https://github.com/akamalll
 
 ---
 
