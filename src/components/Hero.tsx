@@ -4,7 +4,6 @@ import { Download, Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     setIsVisible(true);

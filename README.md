@@ -1,4 +1,4 @@
-# 🚀 Portofolio Muhammad Mallls
+# 🚀 Portofolio Mochammad Akmal Humami
 
 Portofolio pribadi yang modern dan responsif untuk menampilkan keahlian, proyek, dan pengalaman sebagai Full Stack Developer.
 
@@ -151,9 +151,9 @@ Kontribusi selalu diterima! Silakan buat pull request atau buka issue untuk sara
 
 ## 📞 Kontak
 
-- **Email**: muhammad.mallls@example.com
-- **LinkedIn**: [LinkedIn Profile]
-- **GitHub**: [GitHub Profile]
+- **Email**: ahumami22@gmail.com
+- **LinkedIn**: https://www.linkedin.com/in/mochakmalhumami/
+- **GitHub**: https://github.com/akamalll
 
 ---
 
