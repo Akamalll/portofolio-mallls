@@ -7,7 +7,7 @@
 - **Hamburger Menu**: Menu navigasi yang dapat dilipat dengan animasi halus
 - **Touch Gestures**: Swipe down untuk menutup menu mobile
 - **Overlay Background**: Background blur saat menu terbuka
-- **Scroll to Top Button**: Tombol untuk kembali ke atas halaman (hanya di mobile)
+- **Scroll to Top Button**: Tombol untuk kembali ke atas halaman (hanya di mobile) - **POSISI DI POJOK BAWAH KANAN**
 - **Body Scroll Lock**: Mencegah scroll body saat menu mobile terbuka
 
 ### 2. **Hero Section Mobile-Optimized**
@@ -38,6 +38,88 @@
 - **Font Size Prevention**: Mencegah zoom otomatis pada input focus
 - **Smooth Scrolling**: Scrolling yang halus dengan `-webkit-overflow-scrolling: touch`
 - **Mobile Animations**: Animasi khusus untuk mobile dengan performa optimal
+
+## 📱 **FITUR BARU: Tombol Scroll Up Mobile di Pojok Bawah**
+
+### **Logika Deteksi Footer**
+
+Tombol scroll to top menggunakan logika cerdas untuk mendeteksi kapan user berada di area footer:
+
+```javascript
+// Deteksi posisi footer
+const footer = document.querySelector('footer');
+if (footer) {
+  const footerTop = footer.offsetTop; // Posisi atas footer
+  const windowHeight = window.innerHeight; // Tinggi viewport
+  const scrollPosition = window.scrollY; // Posisi scroll saat ini
+
+  // Tombol muncul ketika viewport mencapai area footer
+  const isInFooterArea = scrollPosition + windowHeight >= footerTop;
+  const isScrollingDown = scrollPosition > lastScrollY.current;
+
+  // Jika scroll ke bawah dan keluar dari footer, cepat hilangkan tombol
+  if (isScrollingDown && !isInFooterArea) {
+    setShowScrollTop(false);
+  } else {
+    setShowScrollTop(isInFooterArea);
+  }
+}
+```
+
+**Cara Kerja:**
+
+- **footerTop**: Posisi absolut footer dari atas halaman
+- **windowHeight**: Tinggi viewport browser
+- **scrollPosition**: Posisi scroll saat ini
+- **isInFooterArea**: `true` ketika bagian bawah viewport mencapai atau melewati footer
+- **isScrollingDown**: `true` ketika user scroll ke bawah
+- **Cepat Hilang**: Tombol langsung hilang ketika scroll ke bawah keluar dari footer
+
+### **Posisi dan Styling**
+
+- **Lokasi**: Posisi fixed di pojok bawah kanan layar
+- **Posisi Vertikal**: Di bagian bawah layar (`bottom: 16px` desktop, `bottom: 20px` mobile)
+- **Ukuran**: 48px x 48px (56px x 56px di mobile)
+- **Warna**: Gradient biru yang menarik
+- **Shadow**: Box shadow dengan efek depth dan backdrop blur
+
+### **Fitur Interaktif**
+
+- **Muncul Otomatis**: Hanya muncul ketika user berada di area footer
+- **Animasi Cepat**: Slide in dari bawah dengan animasi yang sangat cepat (0.15s)
+- **Touch Feedback**: Scale animation saat disentuh dengan transisi cepat
+- **Hover Effect**: Perubahan warna dan shadow saat hover dengan transisi cepat
+- **Dark Mode Support**: Warna yang menyesuaikan mode gelap
+
+### **Responsive Design**
+
+```css
+/* Desktop */
+.mobile-scroll-up-button {
+  bottom: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .mobile-scroll-up-button {
+    bottom: 40px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+}
+```
+
+### **Animasi**
+
+- **Slide In**: Dari bawah ke atas dengan opacity fade (0.15s)
+- **Slide Out**: Ke bawah dengan opacity fade (0.15s)
+- **Hover**: Scale up dengan shadow enhancement (0.15s)
+- **Active**: Scale down untuk feedback touch (0.15s)
 
 ## 📱 Breakpoint Responsive
 
@@ -92,7 +174,41 @@ useEffect(() => {
 }, [isMenuOpen]);
 ```
 
-### 3. **Responsive Design Patterns**
+### 3. **Scroll to Top Button Implementation**
+
+```typescript
+// State untuk mengontrol visibility tombol scroll up
+const [showScrollTop, setShowScrollTop] = useState(false);
+
+// Event listener untuk scroll dengan deteksi footer
+useEffect(() => {
+  const handleScroll = () => {
+    const scrolled = window.scrollY > 50;
+    setScrolled(scrolled);
+
+    // Hitung posisi footer
+    const footer = document.querySelector('footer');
+    if (footer) {
+      const footerTop = footer.offsetTop;
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY;
+
+      // Tombol scroll to top hanya muncul ketika user berada di area footer
+      const isInFooterArea = scrollPosition + windowHeight >= footerTop;
+      setShowScrollTop(isInFooterArea);
+    }
+  };
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+// Fungsi scroll to top
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+```
+
+### 4. **Responsive Design Patterns**
 
 ```css
 /* Mobile-specific improvements */
@@ -159,8 +275,15 @@ npm start
 ### 3. **Mobile Navigation**
 
 - **Hamburger Menu**: Tap untuk membuka/menutup menu
-- **Scroll to Top**: Tap tombol panah untuk kembali ke atas
+- **Scroll to Top**: Tap tombol panah di samping kanan untuk kembali ke atas
 - **Tab Navigation**: Tap tab untuk mengganti konten di contact section
+
+### 4. **Scroll Up Button Mobile**
+
+- **Posisi**: Di bagian samping kanan layar, tengah vertikal
+- **Muncul**: Otomatis saat scroll lebih dari 300px
+- **Fungsi**: Scroll smooth ke atas halaman
+- **Animasi**: Slide in/out dari kanan dengan efek smooth
 
 ## 🔮 Fitur Mendatang
 
@@ -207,3 +330,25 @@ npm start
 ---
 
 **Dikembangkan dengan ❤️ untuk pengalaman mobile yang optimal**
+
+### Fitur yang Harus Di-test:
+
+- [ ] Menu mobile buka/tutup dengan smooth
+- [ ] Tombol scroll to top muncul **hanya ketika berada di area footer**
+- [ ] Tombol scroll to top **tidak muncul** ketika scroll di bagian atas/middle halaman
+- [ ] Tombol scroll to top **muncul** ketika scroll mencapai footer
+- [ ] Navigasi antar section berfungsi
+- [ ] Form input tidak menyebabkan zoom
+- [ ] Filter proyek berfungsi dengan baik
+- [ ] Copy to clipboard berfungsi
+- [ ] Dark mode toggle responsif
+- [ ] Tidak ada horizontal scroll
+
+### Testing Tombol Scroll to Top:
+
+1. **Scroll ke bagian atas halaman** → Tombol **tidak muncul**
+2. **Scroll ke bagian tengah halaman** → Tombol **tidak muncul**
+3. **Scroll ke area footer** → Tombol **muncul** dengan animasi cepat
+4. **Scroll ke bawah keluar dari footer** → Tombol **cepat hilang**
+5. **Scroll ke atas kembali ke footer** → Tombol **muncul lagi**
+6. **Klik tombol scroll to top** → Halaman scroll ke atas dengan smooth

@@ -12,7 +12,6 @@ const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'contact' | 'social'>('contact');
   const formRef = useRef<HTMLFormElement>(null);
 
   const contactInfo = [
@@ -37,13 +36,6 @@ const Contact: React.FC = () => {
       href: '#',
       copyValue: 'Surabaya, Indonesia',
     },
-  ];
-
-  const socialLinks = [
-    { name: 'GitHub', href: 'https://github.com/akamalll', color: 'hover:bg-gray-800' },
-    { name: 'LinkedIn', href: 'https://linkedin.com/in//mochakmalhumami', color: 'hover:bg-blue-600' },
-    { name: 'Twitter', href: 'https://twitter.com/mallls', color: 'hover:bg-blue-400' },
-    { name: 'Instagram', href: 'https://instagram.com/akmalll_h', color: 'hover:bg-pink-600' },
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -124,115 +116,43 @@ const Contact: React.FC = () => {
               </p>
             </div>
 
-            {/* Mobile Tab Navigation */}
-            <div className="lg:hidden">
-              <div className="flex space-x-1 bg-gray-200 dark:bg-gray-700 rounded-lg p-1">
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setActiveTab('contact')}
-                  className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${
-                    activeTab === 'contact' ? 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-sm' : 'text-gray-600 dark:text-gray-300'
-                  }`}
-                >
-                  Kontak
-                </motion.button>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setActiveTab('social')}
-                  className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-200 ${activeTab === 'social' ? 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white shadow-sm' : 'text-gray-600 dark:text-gray-300'}`}
-                >
-                  Sosial Media
-                </motion.button>
-              </div>
-            </div>
-
             {/* Contact Info Cards */}
-            <AnimatePresence mode="wait">
-              {activeTab === 'contact' && (
-                <motion.div key="contact" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="space-y-4 sm:space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.div
-                      key={info.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.02, x: 5 }}
-                      className="flex items-center justify-between p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <motion.a href={info.href} whileTap={{ scale: 0.95 }} className="flex items-center space-x-3 sm:space-x-4 flex-1">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                          <info.icon className="text-white sm:w-6 sm:h-6" size={20} />
-                        </div>
-                        <div>
-                          <h4 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white">{info.title}</h4>
-                          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">{info.value}</p>
-                        </div>
-                      </motion.a>
+            <div className="space-y-4 sm:space-y-6">
+              {contactInfo.map((info, index) => (
+                <motion.div
+                  key={info.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  className="flex items-center justify-between p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <motion.a href={info.href} whileTap={{ scale: 0.95 }} className="flex items-center space-x-3 sm:space-x-4 flex-1">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                      <info.icon className="text-white sm:w-6 sm:h-6" size={20} />
+                    </div>
+                    <div>
+                      <h4 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white">{info.title}</h4>
+                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">{info.value}</p>
+                    </div>
+                  </motion.a>
 
-                      <motion.button whileTap={{ scale: 0.9 }} onClick={() => copyToClipboard(info.copyValue, info.title)} className="p-2 text-gray-400 hover:text-blue-500 transition-colors duration-200" title={`Salin ${info.title}`}>
-                        <Copy size={16} />
-                      </motion.button>
-                    </motion.div>
-                  ))}
-
-                  {/* Share Button */}
-                  <motion.button
-                    whileTap={{ scale: 0.95 }}
-                    onClick={shareContact}
-                    className="w-full p-4 sm:p-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
-                  >
-                    <Share2 size={20} />
-                    <span className="font-medium">Bagikan Kontak</span>
+                  <motion.button whileTap={{ scale: 0.9 }} onClick={() => copyToClipboard(info.copyValue, info.title)} className="p-2 text-gray-400 hover:text-blue-500 transition-colors duration-200" title={`Salin ${info.title}`}>
+                    <Copy size={16} />
                   </motion.button>
                 </motion.div>
-              )}
+              ))}
 
-              {activeTab === 'social' && (
-                <motion.div key="social" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="space-y-4">
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white mb-4">Ikuti Saya</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    {socialLinks.map((platform, index) => (
-                      <motion.a
-                        key={platform.name}
-                        href={platform.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className={`p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 ${platform.color} text-gray-600 dark:text-gray-300 hover:text-white`}
-                      >
-                        <span className="text-lg font-bold">{platform.name[0]}</span>
-                        <span className="font-medium text-sm">{platform.name}</span>
-                      </motion.a>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Desktop Social Links */}
-            <div className="hidden lg:block">
-              <h4 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white mb-3 sm:mb-4">Ikuti Saya</h4>
-              <div className="flex space-x-3 sm:space-x-4">
-                {socialLinks.map((platform) => (
-                  <motion.a
-                    key={platform.name}
-                    href={platform.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`w-8 h-8 sm:w-10 sm:h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-200 ${platform.color} hover:text-white`}
-                  >
-                    <span className="text-xs sm:text-sm font-medium">{platform.name[0]}</span>
-                  </motion.a>
-                ))}
-              </div>
+              {/* Share Button */}
+              <motion.button
+                whileTap={{ scale: 0.95 }}
+                onClick={shareContact}
+                className="w-full p-4 sm:p-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2"
+              >
+                <Share2 size={20} />
+                <span className="font-medium">Bagikan Kontak</span>
+              </motion.button>
             </div>
           </motion.div>
 

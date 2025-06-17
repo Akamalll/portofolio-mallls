@@ -13,13 +13,38 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const lastScrollY = useRef(0);
   const touchStartY = useRef<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      setShowScrollTop(window.scrollY > 300);
+      const scrolled = window.scrollY > 50;
+      setScrolled(scrolled);
+
+      // Hitung posisi footer
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerTop = footer.offsetTop;
+        const windowHeight = window.innerHeight;
+        const scrollPosition = window.scrollY;
+
+        // Tombol scroll to top hanya muncul ketika user berada di area footer
+        // Dan cepat menghilang ketika scroll ke bawah keluar dari footer
+        const isInFooterArea = scrollPosition + windowHeight >= footerTop;
+        const isScrollingDown = scrollPosition > lastScrollY.current;
+
+        // Jika scroll ke bawah dan keluar dari footer, cepat hilangkan tombol
+        if (isScrollingDown && !isInFooterArea) {
+          setShowScrollTop(false);
+        } else {
+          setShowScrollTop(isInFooterArea);
+        }
+
+        // Simpan posisi scroll untuk perbandingan berikutnya
+        lastScrollY.current = scrollPosition;
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -267,15 +292,16 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
         </div>
       </motion.header>
 
-      {/* Scroll to Top Button - Mobile Only */}
+      {/* Scroll to Top Button - Mobile Only - Hanya muncul di area footer */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
+            initial={{ opacity: 0, scale: 0, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0, y: 50 }}
+            transition={{ duration: 0.15 }}
             onClick={scrollToTop}
-            className="touch-feedback fixed bottom-4 right-4 z-40 lg:hidden w-12 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200"
+            className="mobile-scroll-up-button touch-feedback fixed bottom-4 right-4 z-40 lg:hidden w-12 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-150"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Scroll to top"
