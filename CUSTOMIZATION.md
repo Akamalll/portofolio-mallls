@@ -1,6 +1,6 @@
 # 🎨 Panduan Kustomisasi Portofolio
 
-Panduan lengkap untuk mengkustomisasi portofolio Muhammad Mallls sesuai kebutuhan Anda.
+Panduan lengkap untuk mengkustomisasi portofolio Mochammad Akmal Humami sesuai kebutuhan Anda.
 
 ## 📝 Mengubah Informasi Pribadi
 

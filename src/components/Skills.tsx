@@ -73,7 +73,7 @@ const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-16 sm:py-20 bg-white dark:bg-gray-800">
+    <section id="skills" className="py-16 sm:py-20 bg-white dark:bg-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }} className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">Keahlian & Teknologi</h2>
