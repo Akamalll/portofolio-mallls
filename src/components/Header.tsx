@@ -193,21 +193,24 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
           <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Logo */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center space-x-2 touch-feedback" onClick={() => scrollToSection('home')} style={{ cursor: 'pointer' }}>
-              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-md">
                 <span className="text-white font-bold text-xs sm:text-sm">M</span>
               </div>
-              <span className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white hidden sm:block transition-colors duration-200">Mochammad Akmal Humami</span>
-              <span className="text-base sm:text-lg font-bold text-gray-800 dark:text-white sm:hidden transition-colors duration-200">Akmal</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white hidden sm:block transition-colors duration-200 whitespace-nowrap">Akmal Humami</span>
+              <span className="text-base sm:text-lg font-bold text-gray-800 dark:text-white sm:hidden transition-colors duration-200 whitespace-nowrap">Akmal</span>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 ml-auto">
               {navItems.map((item) => (
                 <motion.button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  whileHover={{ y: -2 }}
-                  className="nav-button text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-200 font-medium text-sm xl:text-base"
+                  whileHover={{ y: -2, scale: 1.07, boxShadow: '0 2px 12px 0 rgba(59,130,246,0.08)' }}
+                  whileTap={{ scale: 0.93, backgroundColor: 'rgba(139,92,246,0.12)' }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+                  className="nav-button text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-all duration-200 font-medium text-sm xl:text-base px-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  style={{ position: 'relative', overflow: 'hidden' }}
                 >
                   {item.name}
                 </motion.button>
@@ -215,24 +218,29 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
             </nav>
 
             {/* Dark Mode Toggle & Mobile Menu Button */}
-            <div className="flex items-center space-x-2 sm:space-x-4">
+            <div className="flex items-center space-x-1 sm:space-x-2 ml-4 lg:ml-8">
               <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.13, boxShadow: '0 2px 12px 0 rgba(59,130,246,0.10)' }}
+                whileTap={darkMode ? { scale: 0.88, backgroundColor: 'rgba(59,130,246,0.15)' } : { scale: 0.88, backgroundColor: 'rgba(253,224,71,0.15)' }}
+                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                 onClick={toggleDarkMode}
-                className="dark-mode-toggle touch-feedback p-2 sm:p-2.5 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-all duration-200 shadow-sm dark:shadow-gray-900/20"
+                className="dark-mode-toggle touch-feedback p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-all duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                 aria-label="Toggle dark mode"
+                style={{ overflow: 'hidden', position: 'relative' }}
               >
-                {darkMode ? <Sun size={20} className="sm:w-5 sm:h-5" /> : <Moon size={20} className="sm:w-5 sm:h-5" />}
+                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
               </motion.button>
 
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.13, boxShadow: '0 2px 12px 0 rgba(59,130,246,0.10)' }}
+                whileTap={{ scale: 0.88, backgroundColor: 'rgba(236,72,153,0.13)' }}
+                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="mobile-menu-button touch-feedback lg:hidden p-2 sm:p-2.5 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-all duration-200 shadow-sm dark:shadow-gray-900/20"
+                className="mobile-menu-button touch-feedback lg:hidden p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-all duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                 aria-label="Toggle mobile menu"
+                style={{ overflow: 'hidden', position: 'relative' }}
               >
-                {isMenuOpen ? <X size={20} className="sm:w-5 sm:h-5" /> : <Menu size={20} className="sm:w-5 sm:h-5" />}
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
               </motion.button>
             </div>
           </div>
@@ -248,7 +256,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="lg:hidden mobile-menu mobile-menu-container mobile-menu-stack overflow-hidden"
               >
-                <div className="py-4 border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md">
+                <div className="py-5 border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md px-4">
                   {navItems.map((item, index) => (
                     <motion.a
                       key={item.name}
@@ -257,25 +265,12 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
                         event.preventDefault();
                         handleMobileNavClick(item.id, event);
                       }}
-                      onTouchStart={(event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        console.log('Touch start on:', item.name);
-                      }}
-                      onTouchEnd={(event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        console.log('Touch end on:', item.name);
-                        handleMobileNavClick(item.id, event as any);
-                      }}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="nav-button mobile-menu-item touch-feedback block w-full text-left text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-200 font-medium text-base hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg active:bg-gray-100 dark:active:bg-gray-700"
+                      className="nav-button mobile-menu-item touch-feedback block w-full text-left text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors duration-200 font-medium text-base hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg active:bg-gray-100 dark:active:bg-gray-700 mb-2 px-3 py-3"
                       style={{
-                        minHeight: '48px',
-                        padding: '12px 16px',
-                        marginBottom: '4px',
+                        minHeight: '44px',
                         touchAction: 'manipulation',
                         WebkitTapHighlightColor: 'transparent',
                         textDecoration: 'none',
