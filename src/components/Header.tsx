@@ -173,6 +173,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
     { name: 'Beranda', href: '#home', id: 'home' },
     { name: 'Tentang', href: '#about', id: 'about' },
     { name: 'Keahlian', href: '#skills', id: 'skills' },
+    { name: 'Sertifikat', href: '#certificates', id: 'certificates' },
     { name: 'Proyek', href: '#projects', id: 'projects' },
     { name: 'Kontak', href: '#contact', id: 'contact' },
   ];
