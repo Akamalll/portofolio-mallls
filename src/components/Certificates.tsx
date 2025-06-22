@@ -41,7 +41,7 @@ const Certificates: React.FC = () => {
       title: 'Belajar Dasar Data Science',
       issuer: 'Dicoding',
       date: '2025',
-      image: '/certificates/Belajar Dasar Data Science_page-0001.png',
+      image: '/certificates/belajar_dasar_data_science.png',
       link: 'https://drive.google.com/file/d/1lkRm3BB6QQoXV7D3JoIRYXuJ0DK3oiuh/view?usp=drive_link',
     },
     {
@@ -49,7 +49,7 @@ const Certificates: React.FC = () => {
       title: 'Belajar Dasar Visualisasi Data',
       issuer: 'Dicoding',
       date: '2025',
-      image: '/certificates/Belajar Dasar Visualisasi Data_page-0001.jpg',
+      image: '/certificates/belajar_dasar_visualisasi_data.jpg',
       link: 'https://drive.google.com/file/d/1zqZcwfJGVqhMrs8zEIkojy4wKd-E679W/view?usp=sharing',
     },
     {
@@ -57,7 +57,7 @@ const Certificates: React.FC = () => {
       title: 'Web Desain Internasional GAYATAMA',
       issuer: 'GAYATAMA',
       date: '2024',
-      image: '/certificates/Web Desain Internasional GAYATAMA_page-0001.jpg',
+      image: '/certificates/web_desain_internasional_gayatama.jpg',
       link: 'https://drive.google.com/file/d/1GuGZkRog4fc3lRZCvozxFezbiMRy-g1u/view?usp=drive_link',
     },
     {
@@ -65,7 +65,7 @@ const Certificates: React.FC = () => {
       title: 'Belajar Dasar AI',
       issuer: 'Dicoding',
       date: '2024',
-      image: '/certificates/Belajar Dasar AI - DICODING 2024_page-0001.jpg',
+      image: '/certificates/belajar_dasar_ai_dicoding_2024.jpg',
       link: 'https://drive.google.com/file/d/1Md9s6HZSv0sN9JibJCn1Nebq5tiQbzyT/view?usp=drive_link',
     },
     {
@@ -73,7 +73,7 @@ const Certificates: React.FC = () => {
       title: 'Cloud Essentials Knowledge Badge Assessment',
       issuer: 'AWS training and certification',
       date: '2024',
-      image: '/certificates/Pelatihan AWS Pengetahuan Cloud Essentials 2024_page-0001.jpg',
+      image: '/certificates/pelatihan_aws_cloud_essentials_2024.jpg',
       link: 'https://drive.google.com/file/d/1_tVOHhAVehVV8zA4_zzGxmtZapq5i2YC/view?usp=drive_link',
     },
     {
@@ -81,7 +81,7 @@ const Certificates: React.FC = () => {
       title: 'Flutter in Production',
       issuer: 'Google Developer Group Surabaya',
       date: '2024',
-      image: '/certificates/Peserta Flutter in Production 2025_page-0001.jpg',
+      image: '/certificates/peserta_flutter_in_production_2025.jpg',
       link: 'https://drive.google.com/file/d/1lVNlgXUpcIOlzxh5Qw0gYcPq2aK-xwgF/view?usp=drive_link',
     },
     {
@@ -89,7 +89,7 @@ const Certificates: React.FC = () => {
       title: 'Web Development',
       issuer: 'Himpunan Mahasiswa Informatika UPN "Veteran" Jawa Timr',
       date: '2024',
-      image: '/certificates/Web Desain UPN-Jawa Timur_page-0001.jpg',
+      image: '/certificates/web_desain_upn_jawa_timur.jpg',
       link: 'https://drive.google.com/file/d/1Wm-872L_J0nqT9M331IF6aMQvex0UCRl/view?usp=sharing',
     },
   ];
